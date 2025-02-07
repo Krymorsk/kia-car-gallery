@@ -1,0 +1,109 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Filter Section */
+.filter-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.filter-container h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Dropdowns */
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    transform: scale(1.05);
+}
+
+/* Gallery */
+.gallery {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.car-image {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.car-image:hover {
+    transform: scale(1.1);
+}
+
+/* Download Buttons */
+.download-buttons {
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .filter-container {
+        max-width: 100%;
+    }
+
+    .car-image {
+        width: 90%;
+    }
+}
