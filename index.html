@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kia Car Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Kia Car Gallery</h1>
+    </header>
+
+    <div class="filter-container">
+        <h2>Select Your Car</h2>
+        
+        <label for="carYear">Year:</label>
+        <select id="carYear">
+            <option value="" disabled selected>Select Year</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+        </select>
+
+        <label for="carModel">Model:</label>
+        <select id="carModel" onchange="updateVariants()">
+            <option value="" disabled selected>Select Model</option>
+            <option value="sonet">Sonet</option>
+            <option value="seltos">Seltos</option>
+            <option value="carens">Carens</option>
+            <option value="sorento">Sorento</option>
+        </select>
+
+        <label for="carVariant">Variant:</label>
+        <select id="carVariant">
+            <option value="" disabled selected>Select Variant</option>
+        </select>
+
+        <label for="carColor">Color:</label>
+        <select id="carColor">
+            <option value="" disabled selected>Select Color</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="white">White</option>
+            <option value="black">Black</option>
+        </select>
+
+        <button onclick="filterImages()">Show Photos</button>
+    </div>
+
+    <main>
+        <div class="gallery" id="gallery">
+            <!-- Images will be dynamically added here -->
+        </div>
+    </main>
+
+    <div class="download-buttons">
+        <button id="downloadSingle" onclick="downloadImage()">Download Current Image</button>
+        <button id="downloadZip" onclick="downloadZip()">Download All Images (ZIP)</button>
+    </div>
+</body>
+</html>
