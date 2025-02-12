@@ -1,0 +1,138 @@
+/* General Page Styling */
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header Styling */
+header {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Links */
+nav a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff7e5f;
+    text-shadow: 0px 0px 10px rgba(255, 126, 95, 0.8);
+}
+
+/* Glassmorphism Card */
+.filter-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+.filter-container:hover {
+    transform: scale(1.03);
+}
+
+/* Form Labels */
+.filter-container h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Dropdown Styling */
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+select:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 12px rgba(255, 126, 95, 0.8);
+}
+
+/* Download Buttons */
+.download-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.download-buttons button {
+    width: 200px;
+    max-width: 90%;
+    margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filter-container {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .filter-container {
+        max-width: 100%;
+    }
+
+    .download-buttons button {
+        width: 100%;
+    }
+}
