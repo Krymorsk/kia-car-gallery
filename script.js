@@ -34,7 +34,7 @@ function showPhotos() {
     // Assuming images are stored in /images/{year}/{model}/{variant}/{color}/
     for (let i = 1; i <= 10; i++) {
         let img = document.createElement("img");
-        img.src = `/images/${year}/${model}/${variant}/${color}/img${i}.jpg`;
+        img.src = `/images/${year}/${model}/${variant}/${color}/img${i}.JPG`;
         img.alt = `Image ${i}`;
         gallery.appendChild(img);
     }
