@@ -1,0 +1,122 @@
+/* General Styling */
+body {
+    background: radial-gradient(circle, rgba(18,18,62,1) 0%, rgba(10,10,44,1) 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Navigation Bar */
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 8px #ffcc00;
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Profile Card with Glassmorphism */
+.about-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Glowing Effect */
+.glow-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 204, 255, 0.3));
+    transform: rotate(45deg);
+    opacity: 0.6;
+    animation: glowing 4s infinite linear;
+}
+
+@keyframes glowing {
+    0% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(20px, 20px); }
+    100% { transform: rotate(45deg) translate(0, 0); }
+}
+
+/* Profile Details */
+.about-card h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.about-card h3 {
+    font-size: 18px;
+    color: #ffcc00;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.about-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,71 +1,80 @@
-const carVariants = {
-    sonet: ["HTE", "HTE (O)", "HTK", "HTK (O)", "HTK Plus (O)", "HTX", "GTX Plus", "X-Line"],
-    seltos: ["HTE", "HTE (O)", "HTK", "HTK (O)", "HTK Plus (O)", "HTX", "HTX (O)", "GTX Plus", "X-Line"],
-    carens: ["Premium", "Prestige", "Luxury", "Luxury Plus"],
-    sorento: ["LX", "EX", "SX", "SX Prestige"]
+const variants = {
+    Sonet: ["HTE", "HTK", "HTK+", "GTX", "GTX+"],
+    Seltos: ["HTE", "HTK", "HTK+", "HTX", "GTX+"],
+    Carens: ["Premium", "Premium(O)", "Gravity", "Prestige", "Prestige(O)", "Prestige Plus", "Prestige Plus(O)", "Luxury Plus", "X-Line"],
+    Syros: ["HTK", "HTK(O)", "HTK+", "HTX", "HTX+", "HTX+O"]
 };
 
-function updateVariants() {
-    let model = document.getElementById("carModel").value;
-    let variantSelect = document.getElementById("carVariant");
-    variantSelect.innerHTML = `<option value="" disabled selected>Select Variant</option>`;
-
-    if (carVariants[model]) {
-        carVariants[model].forEach(variant => {
-            let className = variant.toLowerCase().replace(/\s+|\(|\)/g, '');
-            variantSelect.innerHTML += `<option value="${className}">${variant}</option>`;
+// Populate variants dynamically
+document.getElementById("model").addEventListener("change", function () {
+    let model = this.value;
+    let variantSelect = document.getElementById("variant");
+    variantSelect.innerHTML = "";
+    
+    if (variants[model]) {
+        variants[model].forEach(variant => {
+            let option = document.createElement("option");
+            option.value = variant;
+            option.textContent = variant;
+            variantSelect.appendChild(option);
         });
     }
-}
+});
 
-function filterImages() {
-    let year = document.getElementById("carYear").value;
-    let model = document.getElementById("carModel").value;
-    let variant = document.getElementById("carVariant").value;
-    let color = document.getElementById("carColor").value;
+// Show photos with carousel
+function showPhotos() {
+    let year = document.getElementById("year").value;
+    let model = document.getElementById("model").value;
+    let variant = document.getElementById("variant").value;
+    let color = document.getElementById("color").value.replace(/ /g, "_"); // Format spaces
+
     let gallery = document.getElementById("gallery");
+    gallery.innerHTML = ""; // Clear previous images
 
-    if (!year || !model || !variant || !color) {
-        alert("Please select all options to proceed.");
-        return;
+    // Assuming images are stored in /images/{year}/{model}/{variant}/{color}/
+    for (let i = 1; i <= 10; i++) {
+        let img = document.createElement("img");
+        img.src = `/images/${year}/${model}/${variant}/${color}/img${i}.jpg`;
+        img.alt = `Image ${i}`;
+        gallery.appendChild(img);
     }
 
-    gallery.innerHTML = "";
+    // Initialize the carousel
+    $(".image-carousel").slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000
+    });
+}
 
-    for (let i = 1; i <= 5; i++) {
-        let imagePath = `images/${year}/${model}/${variant}/${color}_${i}.jpg`;
-        let imgElement = document.createElement("img");
-        imgElement.src = imagePath;
-        imgElement.alt = `${year} ${model} ${variant} ${color}`;
-        imgElement.classList.add("car-image");
-        imgElement.onerror = function () { this.style.display = 'none'; };
-        gallery.appendChild(imgElement);
+// Download current image
+function downloadCurrent() {
+    let activeImage = document.querySelector(".slick-current img");
+    if (activeImage) {
+        let link = document.createElement("a");
+        link.href = activeImage.src;
+        link.download = activeImage.src.split('/').pop();
+        link.click();
+    } else {
+        alert("No image selected!");
     }
 }
 
-function downloadImage() {
-    let images = document.querySelectorAll(".car-image");
-    if (images.length === 0) return alert("No images available.");
+// Download all images as ZIP
+function downloadAll() {
+    alert("This feature needs a backend server to generate ZIP files.");
+}
+function downloadBrochure() {
+    let model = document.getElementById('brochureModel').value;
+    let brochurePath = `brochures/${model}.pdf`;
+
     let link = document.createElement("a");
-    link.href = images[0].src;
-    link.download = images[0].src.split('/').pop();
+    link.href = brochurePath;
+    link.download = `${model}-Brochure.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
-
-function downloadZip() {
-    let zip = new JSZip();
-    let folder = zip.folder("Kia_Car_Images");
-    let images = document.querySelectorAll(".car-image");
-
-    if (images.length === 0) return alert("No images available.");
-
-    let promises = [...images].map((img, i) =>
-        fetch(img.src).then(r => r.blob()).then(b => folder.file(`image_${i + 1}.jpg`, b))
-    );
-
-    Promise.all(promises).then(() =>
-        zip.generateAsync({ type: "blob" }).then(content => saveAs(content, "Kia_Car_Images.zip"))
-    );
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Kia Brochures</title>
+    <link rel="stylesheet" href="brochures.css">
+</head>
+<body>
+    <header>
+        <h1>DOWNLOAD KIA BROCHURES</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+
+    <section class="brochure-container">
+        <h2>Select a Model to Download Brochure</h2>
+        <select id="car-model">
+            <option value="sonet">Sonet</option>
+            <option value="seltos">Seltos</option>
+            <option value="carnival">Carnival</option>
+            <option value="carens">Carens</option>
+        </select>
+        <button onclick="downloadBrochure()">Download Brochure</button>
+    </section>
+
+    <footer>
+        <p>© 2025 Kia Car Gallery | Created by Arish Ahmad</p>
+    </footer>
+
+    <script>
+        function downloadBrochure() {
+            let model = document.getElementById("car-model").value;
+            let link = "";
+
+            switch (model) {
+                case "sonet":
+                    link = "brochures/sonet.pdf";
+                    break;
+                case "seltos":
+                    link = "brochures/seltos.pdf";
+                    break;
+                case "carnival":
+                    link = "brochures/carnival.pdf";
+                    break;
+                case "carens":
+                    link = "brochures/carens.pdf";
+                    break;
+                default:
+                    alert("Select a valid model.");
+                    return;
+            }
+
+            window.open(link, "_blank");
+        }
+    </script>
+</body>
+</html>
